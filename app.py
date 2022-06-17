@@ -1,3 +1,4 @@
+"""MLOps Test App.py"""
 import flask
 
 app = flask.Flask(__name__)
@@ -5,6 +6,7 @@ app = flask.Flask(__name__)
 
 @app.route("/")
 def hello():
+    """ Hello Jethalal Function"""
     return "<h1>Hello Jethalal</h1>"
 
 
