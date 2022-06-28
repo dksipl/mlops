@@ -5,7 +5,7 @@ test:
 	echo "test passed"
 
 format:
-	black *.py
+	black app.py
 
 lint:
 	pylint app.py
