@@ -17,4 +17,4 @@ jobs:
     - name: build application
       run: make test
     - name: build application
-      run: make fornat
+      run: make format
