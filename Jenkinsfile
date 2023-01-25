@@ -10,6 +10,7 @@ pipeline {
 		task_def_arn = ""
         cluster = ""
         exec_role_arn = ""
+	dockerhub = credentials('Dhruv.samyak')
     }
     
     // Here you can define one or more stages for your pipeline.
@@ -23,6 +24,22 @@ pipeline {
                 // For a list of all the supported steps, take a look at
                 // https://jenkins.io/doc/pipeline/steps/ .
             }
+	    steps {
+                // This is a step of type "echo". It doesn't do much, only prints some text.
+                echo 'build docker image'
+                // For a list of all the supported steps, take a look at
+                // https://jenkins.io/doc/pipeline/steps/ .
+		sh 'docker build -t python-test .'
+            }
+	    steps {
+                // This is a step of type "echo". It doesn't do much, only prints some text.
+                echo 'login and push to docker hub'
+                // For a list of all the supported steps, take a look at
+                // https://jenkins.io/doc/pipeline/steps/ .
+		sh 'docker tag python-test dksipl/python-test'
+		sh 'docker login -u dksipl --password-stdin'
+		sh 'docker push dksipl/python-test'
+	    }
         }
     }
 }
