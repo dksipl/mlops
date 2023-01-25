@@ -44,7 +44,6 @@ pipeline {
 		sh 'docker login -u dksipl --password-stdin'
 		sh 'docker push dksipl/python-test'
 	    }
-	}
         }
     }
 }
