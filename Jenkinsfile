@@ -17,13 +17,15 @@ pipeline {
     // Each stage can execute one or more steps.
     stages {
         // This is a stage.
-        stage('Example') {
+        stage('1') {
             steps {
                 // This is a step of type "echo". It doesn't do much, only prints some text.
                 echo 'This is a sample stage'
                 // For a list of all the supported steps, take a look at
                 // https://jenkins.io/doc/pipeline/steps/ .
             }
+	}
+	stage('2') {
 	    steps {
                 // This is a step of type "echo". It doesn't do much, only prints some text.
                 echo 'build docker image'
@@ -31,6 +33,8 @@ pipeline {
                 // https://jenkins.io/doc/pipeline/steps/ .
 		sh 'docker build -t python-test .'
             }
+	}
+	stage('3') {
 	    steps {
                 // This is a step of type "echo". It doesn't do much, only prints some text.
                 echo 'login and push to docker hub'
@@ -40,6 +44,7 @@ pipeline {
 		sh 'docker login -u dksipl --password-stdin'
 		sh 'docker push dksipl/python-test'
 	    }
+	}
         }
     }
 }
