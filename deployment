@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dintelli-backend
+spec:
+  selector:
+    matchLabels:
+      app: dintelli-backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dintelli-backend
+    spec:
+      containers:
+        - name: dintelli-backend
+          image: samyakinfotech/dintelli-combined-apis:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5007
+      imagePullSecrets:
+        - name: samyak-registry
